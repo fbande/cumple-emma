@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invitación Emma · XV</title>
+  <meta name="description" content="Te espero para compartir esta noche mágica conmigo · Miércoles 23 de Diciembre de 2026 · Vivanco Eventos, Tigre.">
+  <meta property="og:title" content="Los 15 de Emma">
+  <meta property="og:description" content="Miércoles 23 de Diciembre de 2026 · 21:00 a 05:00 hs · Vivanco Eventos, Tigre">
+  <meta property="og:image" content="img/emma-1.jpg">
+  <meta name="theme-color" content="#1b1b1b">
+  <link rel="icon" href="data:,">
+  <link rel="preload" href="fonts/pinyon-script-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=4">
+</head>
+<body>
+
+  <!-- 1. Hero -->
+  <header class="hero">
+    <img src="img/emma-1.jpg" alt="Emma" class="hero__img">
+    <button class="play" id="play" type="button" aria-label="Reproducir música" hidden>
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#fff" stroke="#000" stroke-width="3"/><path id="play-icon" d="M19 15l16 9-16 9z" fill="#000"/></svg>
+    </button>
+    <h1 class="hero__name">Emma</h1>
+  </header>
+
+  <!-- 2. Frase -->
+  <section class="band band--dark">
+    <p class="lead">¡Te espero para compartir esta noche mágica conmigo!</p>
+  </section>
+
+  <!-- 3 y 4. Fiesta, cuenta regresiva y lugar -->
+  <section class="block">
+    <img class="icon" src="img/icons/confetti.svg" alt="">
+    <h2 class="title">FIESTA</h2>
+    <p class="when" id="fecha"></p>
+    <p class="when" id="horario"></p>
+
+    <div class="countdown" id="countdown" role="timer" aria-live="off">
+      <div><span id="cd-d">00</span><small>días</small></div>
+      <i>:</i>
+      <div><span id="cd-h">00</span><small>hs</small></div>
+      <i>:</i>
+      <div><span id="cd-m">00</span><small>min</small></div>
+      <i>:</i>
+      <div><span id="cd-s">00</span><small>seg</small></div>
+    </div>
+
+    <p class="place" id="lugar-nombre"></p>
+    <p class="place place--sub" id="lugar-dir"></p>
+    <a class="btn" id="btn-mapa" href="#" target="_blank" rel="noopener">Cómo llegar</a>
+  </section>
+
+  <!-- 5. Foto con fondo difuminado -->
+  <section class="photo">
+    <div class="photo__bg" aria-hidden="true"></div>
+    <img src="img/emma-3.jpg" alt="Emma junto a una puerta de madera tallada" class="photo__img" loading="lazy">
+  </section>
+
+  <!-- 6. Playlist -->
+  <section class="block">
+    <img class="icon" src="img/icons/musica.svg" alt="">
+    <h2 class="title">¡PLAYLIST!</h2>
+    <p class="text">Decime qué tema no puede faltar<br>en la fiesta.</p>
+    <button class="btn" type="button" data-wa="cancion">Sugerir canción</button>
+  </section>
+
+  <!-- 7. Dress code -->
+  <section class="band band--dark">
+    <img class="icon icon--light" src="img/icons/remera.svg" alt="">
+    <h2 class="title title--light">DRESS CODE</h2>
+    <p class="dress" id="dress"></p>
+    <p class="text text--light" id="dress-evitar"></p>
+  </section>
+
+  <!-- 8. Regalo -->
+  <section class="block">
+    <img class="icon" src="img/icons/sobre-corazon.svg" alt="">
+    <p class="text">Si querés hacerme un presente, te dejo mi alias.</p>
+    <button class="btn" type="button" id="btn-alias"></button>
+    <p class="hint" id="alias-hint" aria-live="polite"></p>
+  </section>
+
+  <!-- 9 y 10. Confirmación y cierre -->
+  <section class="closing">
+    <div class="closing__bg" aria-hidden="true"></div>
+    <div class="closing__box">
+      <h2 class="closing__title">¡Te espero!</h2>
+      <p class="text text--light">¡Confirmá tu asistencia haciendo click acá abajo!</p>
+      <button class="btn btn--light" type="button" data-wa="confirmar">Confirmar asistencia</button>
+      <p class="text text--light closing__thanks">¡Gracias por acompañarme en este momento tan importante!</p>
+    </div>
+  </section>
+
+  <!-- Selector de contacto de WhatsApp -->
+  <dialog id="picker" class="picker">
+    <form method="dialog">
+      <h3 id="picker-title">Elegí a quién escribirle</h3>
+      <ul id="picker-list"></ul>
+      <button class="picker__close" value="cancel">Cancelar</button>
+    </form>
+  </dialog>
+
+  <script src="config.js?v=3"></script>
+  <script src="app.js?v=3"></script>
+</body>
+</html>

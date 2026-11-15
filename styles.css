@@ -1,0 +1,97 @@
+@font-face{font-family:"Pinyon Script";src:url("fonts/pinyon-script-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Tenor Sans";src:url("fonts/tenor-sans-400.woff2") format("woff2");font-weight:400;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Tenor Sans";src:url("fonts/tenor-sans-ext-400.woff2") format("woff2");font-weight:400;font-display:swap;unicode-range:U+0100-02AF,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+:root{
+  --ink:#1b1b1b; --paper:#fff; --muted:#555;
+  --maxw:560px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Tenor Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-weight:400; color:var(--ink); background:var(--paper);
+  line-height:1.5; -webkit-text-size-adjust:100%;
+}
+img{display:block;max-width:100%}
+
+/* Hero */
+.hero{position:relative;height:min(100svh,900px);min-height:480px;overflow:hidden;background:#222}
+.hero__img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(transparent,rgba(0,0,0,.55))}
+.hero__name{
+  position:absolute;z-index:1;left:0;right:0;bottom:19%;text-align:center;
+  font-family:"Pinyon Script",cursive;font-weight:400;color:#fff;
+  font-size:clamp(5rem,26vw,9rem);line-height:1;text-shadow:0 2px 14px rgba(0,0,0,.45);
+}
+.play{position:absolute;z-index:2;top:16px;left:16px;width:48px;height:48px;border:0;background:none;cursor:pointer}
+.play[hidden]{display:none}
+.play svg{width:100%;height:100%}
+
+/* Bandas y bloques */
+.band,.block{padding:56px 24px;text-align:center}
+.band--dark{background:var(--ink);color:#fff}
+.lead{max-width:var(--maxw);margin:0 auto;font-size:1.25rem;font-weight:400}
+.block>*,.band>*{margin-left:auto;margin-right:auto;max-width:var(--maxw)}
+
+.icon{display:block;width:72px;height:72px;margin:0 auto 16px;animation:zoom 2.6s ease-in-out infinite}
+.icon--light{filter:invert(1)}
+@keyframes zoom{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+.title{font-weight:300;font-size:2rem;letter-spacing:.08em;margin-bottom:12px}
+.title--light{color:#fff}
+.when{font-size:1.05rem;font-weight:400}
+.text{font-size:1.05rem;margin-bottom:20px}
+.text--light{color:#e8e8e8}
+.dress{font-size:1.6rem;margin-bottom:8px}
+.hint{min-height:1.4em;margin-top:10px;font-size:.95rem;color:var(--muted)}
+
+/* Cuenta regresiva */
+.countdown{display:flex;justify-content:center;align-items:flex-start;gap:6px;margin:22px auto}
+.countdown div{display:flex;flex-direction:column;align-items:center;min-width:56px}
+.countdown span{font-size:clamp(2.2rem,11vw,3.2rem);font-weight:300;line-height:1.1;font-variant-numeric:tabular-nums}
+.countdown small{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.countdown i{font-style:normal;font-size:clamp(2rem,10vw,2.8rem);line-height:1.15}
+
+.place{font-size:1.1rem;font-weight:400;margin-top:8px}
+.place--sub{font-weight:300;margin:0 auto 22px}
+
+/* Botones */
+.btn{
+  display:inline-block;padding:12px 32px;border:1.5px solid var(--ink);border-radius:12px;
+  background:#fff;color:var(--ink);font:inherit;font-weight:400;font-size:1.05rem;
+  text-decoration:none;cursor:pointer;transition:background .2s,color .2s;
+}
+.btn:hover,.btn:focus-visible{background:var(--ink);color:#fff;outline:none}
+.btn--light{border-color:#fff}
+
+/* Foto con fondo difuminado */
+.photo{position:relative;overflow:hidden;padding:56px 24px;background:#111}
+.photo__bg{position:absolute;inset:-40px;background:url("img/emma-3.jpg") center/cover;filter:blur(36px) brightness(.7) saturate(1.2);transform:scale(1.1)}
+.photo__img{position:relative;width:100%;max-width:420px;height:auto;margin:0 auto;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+
+/* Cierre */
+.closing{position:relative;overflow:hidden;color:#fff;text-align:center}
+.closing__bg{position:absolute;inset:0;background:url("img/emma-2.jpg") center/cover;filter:grayscale(.2)}
+.closing::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.62);z-index:1}
+.closing__box{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:72px 24px}
+.closing__title{font-family:"Pinyon Script",cursive;font-weight:400;font-size:3.6rem;margin-bottom:12px}
+.closing__thanks{margin:36px 0 0}
+
+/* Selector de contacto */
+.picker{border:0;border-radius:16px;padding:24px;width:min(92vw,360px);margin:auto;font:inherit;color:var(--ink)}
+.picker::backdrop{background:rgba(0,0,0,.55)}
+.picker h3{font-weight:400;font-size:1.2rem;margin-bottom:14px;text-align:center}
+.picker ul{list-style:none;display:grid;gap:10px;margin-bottom:14px}
+.picker a{display:block;text-align:center;padding:12px;border:1.5px solid var(--ink);border-radius:12px;color:var(--ink);text-decoration:none;font-weight:400}
+.picker a:hover,.picker a:focus-visible{background:var(--ink);color:#fff;outline:none}
+.picker__close{display:block;margin:0 auto;border:0;background:none;font:inherit;color:var(--muted);cursor:pointer;padding:6px 12px}
+
+@media (min-width:768px){
+  body{background:#f3f3f3}
+  main,header,section{max-width:100%}
+  .hero{height:min(92vh,860px)}
+  .hero__img{object-position:50% 20%}
+}
+.yt{position:fixed;width:1px;height:1px;left:-10px;bottom:0;border:0;opacity:0;pointer-events:none}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.icon{animation:none}}
