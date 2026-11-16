@@ -13,9 +13,9 @@ window.INVITACION = {
   dressCode: "Elegante",
   dressCodeEvitar: "Blanco, Beige y Bordó",
   alias: "emma.haller",
-  // Música de fondo desde YouTube (se carga recién cuando se toca el play).
+  // Música de fondo: archivo propio en audio/ (inicio = segundo de arranque).
   // Vacío = el botón play no se muestra.
-  musica: { youtube: "iOT_zuDHvVk", inicio: 4 },
+  musica: { archivo: "audio/musica.mp3", inicio: 0 },
   // Contactos de WhatsApp (formato internacional sin + ni espacios).
   // Con un solo contacto abre el chat directo; con varios muestra un selector.
   contactos: [

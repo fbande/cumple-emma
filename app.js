@@ -66,31 +66,25 @@
 
   // Música de fondo (solo si hay audio configurado)
   var play = $("play"), icon = $("play-icon");
-  if (C.musica && C.musica.youtube) {
+  if (C.musica && C.musica.archivo) {
     play.hidden = false;
     var PLAY = "M19 15l16 9-16 9z", PAUSE = "M17 15h5v18h-5zM26 15h5v18h-5z";
-    var frame = null, sonando = false;
-    var cmd = function (fn) {
-      if (frame && frame.contentWindow) {
-        frame.contentWindow.postMessage(JSON.stringify({ event: "command", func: fn, args: "" }), "*");
-      }
+    var audio = new Audio(C.musica.archivo);
+    audio.loop = true;
+    audio.preload = "auto";
+    var ui = function () {
+      var on = !audio.paused;
+      icon.setAttribute("d", on ? PAUSE : PLAY);
+      play.setAttribute("aria-label", on ? "Pausar música" : "Reproducir música");
     };
+    audio.addEventListener("loadedmetadata", function () {
+      if (C.musica.inicio) audio.currentTime = C.musica.inicio;
+    }, { once: true });
+    audio.addEventListener("play", ui);
+    audio.addEventListener("pause", ui);
     play.addEventListener("click", function () {
-      if (!frame) {
-        var id = C.musica.youtube;
-        frame = document.createElement("iframe");
-        frame.className = "yt";
-        frame.title = "Música de fondo";
-        frame.allow = "autoplay";
-        frame.src = "https://www.youtube-nocookie.com/embed/" + id +
-          "?autoplay=1&loop=1&playlist=" + id + "&start=" + (C.musica.inicio || 0) +
-          "&controls=0&enablejsapi=1&playsinline=1";
-        document.body.appendChild(frame);
-        sonando = true;
-      } else if (sonando) { cmd("pauseVideo"); sonando = false; }
-      else { cmd("playVideo"); sonando = true; }
-      icon.setAttribute("d", sonando ? PAUSE : PLAY);
-      play.setAttribute("aria-label", sonando ? "Pausar música" : "Reproducir música");
+      if (audio.paused) { var p = audio.play(); if (p && p.catch) p.catch(ui); }
+      else audio.pause();
     });
   }
 })();
