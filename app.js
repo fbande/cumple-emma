@@ -69,48 +69,28 @@
   if (C.musica && C.musica.youtube) {
     play.hidden = false;
     var PLAY = "M19 15l16 9-16 9z", PAUSE = "M17 15h5v18h-5zM26 15h5v18h-5z";
-    var frame = null, sonando = false, listo = false, pendiente = false;
+    var frame = null, sonando = false;
     var cmd = function (fn) {
       if (frame && frame.contentWindow) {
         frame.contentWindow.postMessage(JSON.stringify({ event: "command", func: fn, args: "" }), "*");
       }
     };
-    var ui = function () {
+    play.addEventListener("click", function () {
+      if (!frame) {
+        var id = C.musica.youtube;
+        frame = document.createElement("iframe");
+        frame.className = "yt";
+        frame.title = "Música de fondo";
+        frame.allow = "autoplay";
+        frame.src = "https://www.youtube-nocookie.com/embed/" + id +
+          "?autoplay=1&loop=1&playlist=" + id + "&start=" + (C.musica.inicio || 0) +
+          "&controls=0&enablejsapi=1&playsinline=1";
+        document.body.appendChild(frame);
+        sonando = true;
+      } else if (sonando) { cmd("pauseVideo"); sonando = false; }
+      else { cmd("playVideo"); sonando = true; }
       icon.setAttribute("d", sonando ? PAUSE : PLAY);
       play.setAttribute("aria-label", sonando ? "Pausar música" : "Reproducir música");
-    };
-    // Precarga el reproductor (sin sonar) para que el play sea inmediato
-    function precargar() {
-      if (frame) return;
-      var id = C.musica.youtube;
-      frame = document.createElement("iframe");
-      frame.className = "yt";
-      frame.title = "Música de fondo";
-      frame.allow = "autoplay";
-      frame.src = "https://www.youtube-nocookie.com/embed/" + id +
-        "?autoplay=0&loop=1&playlist=" + id + "&start=" + (C.musica.inicio || 0) +
-        "&controls=0&enablejsapi=1&playsinline=1";
-      frame.addEventListener("load", function () {
-        frame.contentWindow.postMessage(JSON.stringify({ event: "listening", id: 1, channel: "widget" }), "*");
-      });
-      document.body.appendChild(frame);
-    }
-    window.addEventListener("message", function (e) {
-      if (!frame || e.source !== frame.contentWindow || typeof e.data !== "string") return;
-      var d; try { d = JSON.parse(e.data); } catch (_) { return; }
-      if (!listo && (d.event === "onReady" || d.event === "initialDelivery" || d.event === "infoDelivery")) {
-        listo = true;
-        if (pendiente) { cmd("playVideo"); }
-      }
-    });
-    if (document.readyState === "complete") setTimeout(precargar, 300);
-    else window.addEventListener("load", function () { setTimeout(precargar, 300); });
-
-    play.addEventListener("click", function () {
-      precargar();
-      if (sonando) { cmd("pauseVideo"); sonando = false; pendiente = false; }
-      else { sonando = true; if (listo) cmd("playVideo"); else pendiente = true; }
-      ui();
     });
   }
 })();

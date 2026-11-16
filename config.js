@@ -13,7 +13,7 @@ window.INVITACION = {
   dressCode: "Elegante",
   dressCodeEvitar: "Blanco, Beige y Bordó",
   alias: "emma.haller",
-  // Música de fondo desde YouTube (se precarga al abrir la página).
+  // Música de fondo desde YouTube (se carga recién cuando se toca el play).
   // Vacío = el botón play no se muestra.
   musica: { youtube: "iOT_zuDHvVk", inicio: 4 },
   // Contactos de WhatsApp (formato internacional sin + ni espacios).
