@@ -13,7 +13,7 @@ window.INVITACION = {
   dressCode: "Elegante",
   dressCodeEvitar: "Blanco, Beige y Bordó",
   alias: "emma.haller",
-  // Música de fondo desde YouTube (se carga recién cuando se toca el play).
+  // Música de fondo desde YouTube (se precarga al abrir la página).
   // Vacío = el botón play no se muestra.
   musica: { youtube: "iOT_zuDHvVk", inicio: 4 },
   // Contactos de WhatsApp (formato internacional sin + ni espacios).
@@ -22,7 +22,7 @@ window.INVITACION = {
     { nombre: "Contacto", telefono: "5491138634147" }
   ],
   mensajes: {
-    confirmar: "¡Hola! Confirmo mi asistencia a los 15 de Emma 🎉. Mi nombre es: ",
-    cancion: "¡Hola! Quiero sugerir esta canción para la fiesta de Emma 🎶: "
+    confirmar: "¡Hola! Confirmo mi asistencia a los 15 de Emma. Mi nombre es: ",
+    cancion: "¡Hola! Quiero sugerir esta canción para la fiesta de Emma: "
   }
 };
