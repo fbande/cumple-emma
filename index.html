@@ -7,111 +7,19 @@
   <meta name="description" content="Te espero para compartir esta noche mágica conmigo · Miércoles 23 de Diciembre de 2026 · Vivanco Eventos, Tigre.">
   <meta property="og:title" content="Los 15 de Emma">
   <meta property="og:description" content="Miércoles 23 de Diciembre de 2026 · 21:00 a 05:00 hs · Vivanco Eventos, Tigre">
-  <meta property="og:image" content="img/foto-1.jpeg">
+  <meta property="og:image" content="https://invitacion-emma.pages.dev/img/foto-1.jpeg">
+  <meta property="og:url" content="https://invitacion-emma.pages.dev/">
   <meta name="theme-color" content="#1b1b1b">
   <link rel="icon" href="data:,">
-  <link rel="preload" href="fonts/pinyon-script-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="canonical" href="https://invitacion-emma.pages.dev/">
+  <meta http-equiv="refresh" content="0; url=https://invitacion-emma.pages.dev/">
+  <script>location.replace("https://invitacion-emma.pages.dev/" + location.search + location.hash);</script>
+  <style>
+    body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#1b1b1b;color:#f2f2f2;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;text-align:center;padding:16px;box-sizing:border-box}
+    a{color:#f2f2f2}
+  </style>
 </head>
 <body>
-
-  <!-- 1. Hero -->
-  <header class="hero">
-    <img src="img/foto-1.jpeg" alt="Emma" class="hero__img">
-    <button class="play" id="play" type="button" aria-label="Reproducir música" hidden>
-      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#fff" stroke="#000" stroke-width="3"/><path id="play-icon" d="M19 15l16 9-16 9z" fill="#000"/></svg>
-    </button>
-    <h1 class="hero__name">Emma</h1>
-  </header>
-
-  <!-- 2. Frase -->
-  <section class="band band--dark">
-    <p class="lead">¡Te espero para compartir esta noche mágica conmigo!</p>
-  </section>
-
-  <!-- 3 y 4. Fiesta, cuenta regresiva y lugar -->
-  <section class="block">
-    <img class="icon" src="img/icons/confetti.svg" alt="">
-    <h2 class="title">FIESTA</h2>
-    <p class="when" id="fecha"></p>
-    <p class="when" id="horario"></p>
-
-    <div class="countdown" id="countdown" role="timer" aria-live="off">
-      <div><span id="cd-d">00</span><small>días</small></div>
-      <i>:</i>
-      <div><span id="cd-h">00</span><small>hs</small></div>
-      <i>:</i>
-      <div><span id="cd-m">00</span><small>min</small></div>
-      <i>:</i>
-      <div><span id="cd-s">00</span><small>seg</small></div>
-    </div>
-
-    <p class="place" id="lugar-nombre"></p>
-    <p class="place place--sub" id="lugar-dir"></p>
-    <a class="btn" id="btn-mapa" href="#" target="_blank" rel="noopener">Cómo llegar</a>
-  </section>
-
-  <!-- 5. Fotos con fondo difuminado -->
-  <section class="photo">
-    <div class="photo__bg" style="background-image:url('img/foto-2.jpeg')" aria-hidden="true"></div>
-    <img src="img/foto-2.jpeg" alt="Emma" class="photo__img" loading="lazy">
-  </section>
-
-  <section class="photo">
-    <div class="photo__bg" style="background-image:url('img/foto-3.jpeg')" aria-hidden="true"></div>
-    <img src="img/foto-3.jpeg" alt="Emma" class="photo__img" loading="lazy">
-  </section>
-
-  <section class="photo">
-    <div class="photo__bg" style="background-image:url('img/foto-4.jpeg')" aria-hidden="true"></div>
-    <img src="img/foto-4.jpeg" alt="Emma" class="photo__img" loading="lazy">
-  </section>
-
-  <!-- 6. Playlist -->
-  <section class="block">
-    <img class="icon" src="img/icons/musica.svg" alt="">
-    <h2 class="title">¡PLAYLIST!</h2>
-    <p class="text">Decime qué tema no puede faltar<br>en la fiesta.</p>
-    <button class="btn" type="button" data-wa="cancion">Sugerir canción</button>
-  </section>
-
-  <!-- 7. Dress code -->
-  <section class="band band--dark">
-    <img class="icon icon--light" src="img/icons/remera.svg" alt="">
-    <h2 class="title title--light">DRESS CODE</h2>
-    <p class="dress" id="dress"></p>
-    <p class="text text--light" id="dress-evitar"></p>
-  </section>
-
-  <!-- 8. Regalo -->
-  <section class="block">
-    <img class="icon" src="img/icons/sobre-corazon.svg" alt="">
-    <p class="text">Si querés hacerme un presente, te dejo mi alias.</p>
-    <button class="btn" type="button" id="btn-alias"></button>
-    <p class="hint" id="alias-hint" aria-live="polite"></p>
-  </section>
-
-  <!-- 9 y 10. Confirmación y cierre -->
-  <section class="closing">
-    <div class="closing__bg" aria-hidden="true"></div>
-    <div class="closing__box">
-      <h2 class="closing__title">¡Te espero!</h2>
-      <p class="text text--light">¡Confirmá tu asistencia haciendo click acá abajo!</p>
-      <button class="btn btn--light" type="button" data-wa="confirmar">Confirmar asistencia</button>
-      <p class="text text--light closing__thanks">¡Gracias por acompañarme en este momento tan importante!</p>
-    </div>
-  </section>
-
-  <!-- Selector de contacto de WhatsApp -->
-  <dialog id="picker" class="picker">
-    <form method="dialog">
-      <h3 id="picker-title">Elegí a quién escribirle</h3>
-      <ul id="picker-list"></ul>
-      <button class="picker__close" value="cancel">Cancelar</button>
-    </form>
-  </dialog>
-
-  <script src="config.js?v=5"></script>
-  <script src="app.js?v=6"></script>
+  <p>Redirigiendo a la invitación… <a href="https://invitacion-emma.pages.dev/">Tocá acá si no se abre sola</a>.</p>
 </body>
 </html>
